@@ -78,10 +78,10 @@ function App() {
           <div>
             <Eyebrow>Backpacker • Product Builder • Experience Designer</Eyebrow>
             <h1 className="max-w-4xl font-serif text-[clamp(3rem,7vw,6.8rem)] leading-none tracking-[-0.055em] text-pine">
-              Building products like planning a great backpacking trip.
+              Hey, I&apos;m Melanie.
             </h1>
-            <p className="mt-7 max-w-2xl text-lg text-muted-foreground">
-              Every trail and every product begins with curiosity: a map, a problem, a destination, and the people you hope to bring along. I create experiences that help people move from uncertainty to discovery.
+            <p className="mt-7 max-w-2xl text-2xl font-medium lowercase tracking-wide text-muted-foreground">
+              come walk with me
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild href="#journey">Explore the journey</Button>
