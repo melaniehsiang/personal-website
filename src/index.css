@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500&family=Noto+Serif:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,21 +6,21 @@
 
 @layer base {
   :root {
-    --background: 79 40% 84%;
-    --foreground: 143 33% 18%;
-    --card: 45 100% 97%;
-    --card-foreground: 144 12% 13%;
-    --primary: 143 33% 18%;
-    --primary-foreground: 45 100% 97%;
-    --secondary: 41 61% 90%;
-    --secondary-foreground: 143 33% 18%;
-    --muted: 41 48% 88%;
-    --muted-foreground: 143 22% 25%;
-    --accent: 21 52% 50%;
-    --accent-foreground: 45 100% 97%;
-    --border: 143 33% 18% / 0.16;
-    --input: 143 33% 18% / 0.16;
-    --ring: 21 52% 50%;
+    --background: 48 100% 97%;
+    --foreground: 209.44 49.09% 43.14%;
+    --card: 48 100% 97%;
+    --card-foreground: 209.44 49.09% 43.14%;
+    --primary: 209.44 49.09% 43.14%;
+    --primary-foreground: 48 100% 97%;
+    --secondary: 205 100% 91%;
+    --secondary-foreground: 209.44 49.09% 43.14%;
+    --muted: 205 70% 92%;
+    --muted-foreground: 209.44 49.09% 43.14%;
+    --accent: 203 88% 76%;
+    --accent-foreground: 209.44 49.09% 43.14%;
+    --border: 209.44 49.09% 43.14% / 0.2;
+    --input: 209.44 49.09% 43.14% / 0.2;
+    --ring: 203 88% 76%;
     --radius: 1rem;
   }
 
@@ -33,6 +33,6 @@
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background font-serif text-foreground antialiased;
   }
 }
