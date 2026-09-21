@@ -101,7 +101,7 @@ function App() {
           </div>
         </section>
 
-        <section id="about" data-page-title="About" className="ml-44 mr-32 flex min-h-screen items-center justify-start py-20">
+        <section id="about" data-page-title="About" className="ml-44 mr-24 flex min-h-screen items-center justify-start py-20">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               About
@@ -112,7 +112,7 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" data-page-title="Projects" className="ml-44 mr-32 min-h-screen py-28">
+        <section id="projects" data-page-title="Projects" className="ml-44 mr-24 min-h-screen py-28">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Projects
