@@ -106,9 +106,66 @@ function App() {
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               About
             </h2>
-            <p className="mt-8 max-w-2xl font-sans text-xl leading-relaxed text-muted-foreground">
-              More soon.
-            </p>
+            <div className="mt-10 space-y-8">
+              <section>
+                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                  Work Experience
+                </h3>
+                <div className="ml-4 mt-4 w-[calc(100vw-25rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                  <p>The Trade Desk</p>
+                  <div className="mt-2 space-y-3">
+                    <div className="border-l border-skyAccent/50 pl-4">
+                      <div className="flex items-baseline justify-between gap-8">
+                        <span>Product Manager I</span>
+                        <span className="text-right">Aug 2026</span>
+                      </div>
+                      <ul className="mt-1 list-['▸'] pl-5 text-[1.0625rem] leading-snug">
+                        <li className="pl-2">Impacted by September 2026 layoffs</li>
+                      </ul>
+                    </div>
+                    <div className="border-l border-skyAccent/50 pl-4">
+                      <div className="flex items-baseline justify-between gap-8">
+                        <span>Product Management Intern</span>
+                        <span className="text-right">May 2025 - Aug 2025</span>
+                      </div>
+                      <ul className="mt-1 list-['▸'] space-y-2 pl-5 text-[1.0625rem] leading-snug">
+                        <li className="pl-2">
+                          Drove a projected $6.2M lift in multi-retailer spend for FY2026 by building and launching an internal tool to help traders measure audience reach and overlap across campaigns and identify opportunities for additional retail data activation
+                        </li>
+                        <li className="pl-2">
+                          Drove 20% adoption within 2 weeks and a projected 10% increase in workflow efficiency in Q4 by synthesizing 5+ trader feedback interviews into 5 feature requirements to address audience duplication and previously unquantifiable incremental reach
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                  Education
+                </h3>
+                <div className="ml-4 mt-4 w-[calc(100vw-25rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                  <div className="flex items-baseline justify-between gap-8">
+                    <span>University of California, Berkeley</span>
+                    <span className="text-right">Aug 2022 - May 2026</span>
+                  </div>
+                  <p className="mt-1 text-[1.0625rem]">B.A. Cognitive Science &amp; B.A. Data Science</p>
+                </div>
+              </section>
+              <section>
+                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                  <a
+                    href="/files/Melanie_Hsiang_Resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:translate-x-1"
+                  >
+                    <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume</span>
+                    <span className="ml-[0.15em] inline-block origin-left scale-125">↗</span>
+                  </a>
+                </h3>
+              </section>
+            </div>
           </div>
         </section>
 
