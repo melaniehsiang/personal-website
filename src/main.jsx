@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { Mail } from "lucide-react";
 import "./index.css";
 
 const projects = [
@@ -82,12 +83,31 @@ function App() {
             <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#personal">
               Personal
             </a>
-            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#contact">
-              Contact
-            </a>
+
           </div>
         </nav>
       </header>
+
+      <div className="fixed bottom-7 left-7 z-20 flex items-center gap-3 text-foreground">
+        <a
+          href="mailto:melaniehsiang@berkeley.edu"
+          aria-label="Email Melanie Hsiang"
+          className="translate-y-0.5 transition duration-300 hover:translate-y-0"
+        >
+          <Mail size={18} strokeWidth={1.8} />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/melaniehsiang"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn profile"
+          className="transition duration-300 hover:-translate-y-0.5"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.32 8.02h4.36V23H.32V8.02ZM7.62 8.02h4.18v2.05h.06c.58-1.1 2-2.26 4.12-2.26 4.41 0 5.22 2.9 5.22 6.67V23h-4.35v-7.55c0-1.8-.03-4.12-2.51-4.12-2.52 0-2.9 1.97-2.9 4V23H7.62V8.02Z" />
+          </svg>
+        </a>
+      </div>
 
       <main className="min-h-screen">
         <section id="top" data-page-title="" className="mx-auto flex min-h-screen w-[min(1120px,calc(100%-32px))] items-center justify-center py-20">
@@ -111,7 +131,7 @@ function App() {
                 <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
                   Work Experience
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "17px" }}>
                   <p>The Trade Desk</p>
                   <div className="mt-2 space-y-3">
                     <div className="border-l border-skyAccent/50 pl-4">
@@ -119,7 +139,7 @@ function App() {
                         <span>Product Manager I</span>
                         <span className="text-right">Aug 2026</span>
                       </div>
-                      <ul className="mt-1 list-['▸'] pl-5 text-[1.0625rem] leading-snug">
+                      <ul className="mt-1 list-['▸'] pl-5 leading-snug" style={{ fontSize: "16px" }}> 
                         <li className="pl-2">Impacted by September 2026 layoffs</li>
                       </ul>
                     </div>
@@ -128,7 +148,7 @@ function App() {
                         <span>Product Management Intern</span>
                         <span className="text-right">May 2025 - Aug 2025</span>
                       </div>
-                      <ul className="mt-1 list-['▸'] space-y-2 pl-5 text-[1.0625rem] leading-snug">
+                      <ul className="mt-1 list-['▸'] space-y-2 pl-5 leading-snug" style={{ fontSize: "16px" }}>
                         <li className="pl-2">
                           Drove a projected $6.2M lift in multi-retailer spend for FY2026 by building and launching an internal tool to help traders measure audience reach and overlap across campaigns and identify opportunities for additional retail data activation
                         </li>
@@ -144,12 +164,12 @@ function App() {
                 <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
                   Education
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "17px" }}>
                   <div className="flex items-baseline justify-between gap-8">
                     <span>University of California, Berkeley</span>
                     <span className="text-right">Aug 2022 - May 2026</span>
                   </div>
-                  <p className="mt-1 text-[1.0625rem]">B.A. Cognitive Science &amp; B.A. Data Science</p>
+                  <p className="mt-1">B.A. Cognitive Science &amp; B.A. Data Science</p>
                 </div>
               </section>
               <section>
@@ -161,7 +181,7 @@ function App() {
                     className="transition hover:translate-x-1"
                   >
                     <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume</span>
-                    <span className="ml-[0.15em] inline-block origin-left scale-125">↗</span>
+                    <span className="ml-[0.15em] inline-block origin-left -translate-y-[0.0625rem] scale-125">↗</span>
                   </a>
                 </h3>
               </section>
