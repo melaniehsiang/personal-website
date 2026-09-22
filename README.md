@@ -24,18 +24,34 @@ Start the local development server:
 npm run dev
 ```
 
+If you change `tailwind.config.js`, `postcss.config.js`, `vite.config.js`, or font configuration, stop and restart the dev server. To force Vite/Tailwind to rebuild cached styling, run:
+
+```bash
+npm run dev:fresh
+```
+
 Open the URL printed in your terminal. Vite usually runs at:
 
 ```text
 http://localhost:5173
 ```
 
+For a production-equivalent local check, use:
+
+```bash
+npm run preview:prod
+```
+
+This runs `npm run build` first, then serves the generated `dist/` output so local matches the published build process.
+
 ## Available commands
 
 ```bash
-npm run dev      # Start local dev server
-npm run build    # Build production files into dist/
-npm run preview  # Preview the production build locally
+npm run dev          # Start local dev server
+npm run dev:fresh    # Start dev server and force dependency/style cache rebuild
+npm run build        # Build production files into dist/
+npm run preview      # Preview existing production build locally
+npm run preview:prod # Build, then preview production output locally
 ```
 
 ## Adding photos later
