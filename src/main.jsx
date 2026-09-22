@@ -108,10 +108,10 @@ function App() {
             </h2>
             <div className="mt-10 space-y-8">
               <section>
-                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
                   Work Experience
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-25rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
                   <p>The Trade Desk</p>
                   <div className="mt-2 space-y-3">
                     <div className="border-l border-skyAccent/50 pl-4">
@@ -141,10 +141,10 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
                   Education
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-25rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
                   <div className="flex items-baseline justify-between gap-8">
                     <span>University of California, Berkeley</span>
                     <span className="text-right">Aug 2022 - May 2026</span>
@@ -153,7 +153,7 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-xl leading-relaxed text-foreground">
+                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
                   <a
                     href="/files/Melanie_Hsiang_Resume.pdf"
                     target="_blank"
@@ -174,7 +174,7 @@ function App() {
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Projects
             </h2>
-            <p className="mt-8 max-w-2xl font-sans text-xl leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
               I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — <em>building for and with people</em>.
             </p>
           </div>
