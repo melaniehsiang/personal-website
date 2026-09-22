@@ -23,11 +23,11 @@ function ProjectCard({ project }) {
         href={project.figmaUrl}
         target="_blank"
         rel="noreferrer"
-        className="mt-3 inline-block font-sans text-base text-foreground underline decoration-skyAccent/40 underline-offset-4 transition hover:-translate-x-1 hover:decoration-skyAccent"
+        className="mt-3 inline-block font-sans text-lg text-foreground underline decoration-skyAccent/40 underline-offset-4 transition hover:-translate-x-1 hover:decoration-skyAccent"
       >
         View Presentation &amp; Prototype
       </a>
-      <p className="ml-auto mt-4 max-w-xl font-sans text-base leading-relaxed text-muted-foreground">
+      <p className="ml-auto mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted-foreground">
         A product case study done in 2023 during my time at Product&nbsp;Space&nbsp;@&nbsp;Berkeley, teaching me the power
         <br />
         of consumer feedback and Figma prototyping.
@@ -64,15 +64,15 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-hidden">
-      <header className="fixed left-0 top-0 z-20 h-screen w-48 px-4 py-7">
-        <nav className="flex h-full flex-col gap-6">
+      <header className="fixed left-0 top-0 z-20 h-screen w-44 px-4 py-7">
+        <nav className="flex h-full flex-col gap-5">
           <a
             href="#top"
-            className="ml-3 grid h-[3.75rem] w-[3.75rem] place-items-center rounded-full border border-skyAccent/35 bg-ivory/25 text-[0.8125rem] font-extrabold tracking-tight text-foreground shadow-[0_8px_26px_rgba(31,74,116,0.28)] backdrop-blur-md transition duration-300 hover:scale-105"
+            className="ml-3 grid h-[3.4rem] w-[3.4rem] place-items-center rounded-full border border-skyAccent/35 bg-ivory/25 text-xs font-extrabold tracking-tight text-foreground shadow-[0_8px_26px_rgba(31,74,116,0.28)] backdrop-blur-md transition duration-300 hover:scale-105"
           >
             MKH
           </a>
-          <div className="flex flex-1 flex-col gap-1.5 text-sm font-bold text-foreground">
+          <div className="flex flex-1 flex-col gap-1 text-[0.8125rem] font-bold text-foreground">
             <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#about">
               About
             </a>
@@ -108,10 +108,10 @@ function App() {
             </h2>
             <div className="mt-10 space-y-8">
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
                   Work Experience
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
                   <p>The Trade Desk</p>
                   <div className="mt-2 space-y-3">
                     <div className="border-l border-skyAccent/50 pl-4">
@@ -141,10 +141,10 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
                   Education
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
+                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
                   <div className="flex items-baseline justify-between gap-8">
                     <span>University of California, Berkeley</span>
                     <span className="text-right">Aug 2022 - May 2026</span>
@@ -153,7 +153,7 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
                   <a
                     href="/files/Melanie_Hsiang_Resume.pdf"
                     target="_blank"
