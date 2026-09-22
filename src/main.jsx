@@ -108,7 +108,7 @@ function App() {
             </h2>
             <div className="mt-10 space-y-8">
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
                   Work Experience
                 </h3>
                 <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
@@ -141,7 +141,7 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
                   Education
                 </h3>
                 <div className="ml-4 mt-4 w-[calc(100vw-22rem)] font-['Noto_Sans'] text-lg leading-snug text-muted-foreground">
@@ -153,7 +153,7 @@ function App() {
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
                   <a
                     href="/files/Melanie_Hsiang_Resume.pdf"
                     target="_blank"
@@ -174,7 +174,7 @@ function App() {
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Projects
             </h2>
-            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
+            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
               I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — <em>building for and with people</em>.
             </p>
           </div>
