@@ -13,26 +13,28 @@ const projects = [
 
 function ProjectCard({ project }) {
   return (
-    <article className="ml-auto mt-14 max-w-3xl text-right">
-      <div className="ml-auto grid aspect-video w-[28rem] max-w-full place-items-center rounded-2xl border border-skyAccent/25 bg-babyBlue/20 text-center font-sans text-xs text-muted-foreground shadow-[0_8px_26px_rgba(31,74,116,0.08)]">
+    <article className="mt-14 flex max-w-5xl items-center gap-12 text-left">
+      <div className="grid aspect-video w-[26rem] shrink-0 max-w-full place-items-center rounded-2xl border border-skyAccent/25 bg-babyBlue/20 text-center font-sans text-xs text-muted-foreground shadow-[0_8px_26px_rgba(31,74,116,0.08)]">
         Video placeholder
       </div>
-      <h3 className="mt-6 font-serif text-[clamp(1.5rem,3vw,2.35rem)] leading-tight tracking-[-0.035em] text-foreground">
-        {project.title}
-      </h3>
-      <a
-        href={project.figmaUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-3 inline-block font-sans text-lg text-foreground underline decoration-skyAccent/40 underline-offset-4 transition hover:-translate-x-1 hover:decoration-skyAccent"
-      >
-        View Presentation &amp; Prototype
-      </a>
-      <p className="ml-auto mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted-foreground">
-        A product case study done in 2023 during my time at Product&nbsp;Space&nbsp;@&nbsp;Berkeley, teaching me the power
-        <br />
-        of consumer feedback and Figma prototyping.
-      </p>
+      <div>
+        <h3 className="font-serif text-[clamp(1.5rem,3vw,2.35rem)] leading-tight tracking-[-0.035em] text-foreground">
+          {project.title}
+        </h3>
+        <a
+          href={project.figmaUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-block font-sans text-lg text-foreground underline decoration-skyAccent/40 underline-offset-4 transition hover:translate-x-1 hover:decoration-skyAccent"
+        >
+          View Presentation &amp; Prototype
+        </a>
+        <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted-foreground">
+          A product case study done in 2023 during my time at Product&nbsp;Space&nbsp;@&nbsp;Berkeley, teaching me the power
+          <br />
+          of consumer feedback and Figma prototyping.
+        </p>
+      </div>
     </article>
   );
 }
@@ -75,13 +77,13 @@ function App() {
           </a>
           <div className="flex flex-1 flex-col gap-1 text-[0.8125rem] font-bold text-foreground">
             <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#about">
-              About
+              About.
             </a>
             <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#projects">
-              Projects
+              Projects.
             </a>
             <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#personal">
-              Personal
+              Personal.
             </a>
 
           </div>
@@ -124,63 +126,104 @@ function App() {
         <section id="about" data-page-title="About" className="ml-44 mr-20 flex min-h-screen items-center justify-start py-20">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
-              About
+              About.
             </h2>
             <div className="mt-10 space-y-8">
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
-                  Work Experience
+                <h3 className="font-sans text-foreground" style={{ fontSize: "22px", lineHeight: "30px" }}>
+                  Work Experience.
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "17px" }}>
-                  <p>The Trade Desk</p>
-                  <div className="mt-2 space-y-3">
-                    <div className="border-l border-skyAccent/50 pl-4">
-                      <div className="flex items-baseline justify-between gap-8">
-                        <span>Product Manager I</span>
-                        <span className="text-right">Aug 2026</span>
+                <div className="mt-4 grid w-[calc(100vw-20rem)] grid-cols-3 gap-8 font-sans text-muted-foreground" style={{ fontSize: "19px", lineHeight: "25px" }}>
+                  <div>
+                    <p>Full-time</p>
+                    <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
+                      <div>
+                        <div className="flex items-baseline justify-between gap-4">
+                          <span>The Trade Desk</span>
+                          <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Aug 2026</span>
+                        </div>
+                        <div className="mt-1 border-l border-skyAccent/40 pl-3 opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>
+                          Product Manager I
+                        </div>
                       </div>
-                      <ul className="mt-1 list-['▸'] pl-5 leading-snug" style={{ fontSize: "16px" }}> 
-                        <li className="pl-2">Impacted by September 2026 layoffs</li>
-                      </ul>
                     </div>
-                    <div className="border-l border-skyAccent/50 pl-4">
-                      <div className="flex items-baseline justify-between gap-8">
-                        <span>Product Management Intern</span>
-                        <span className="text-right">May 2025 - Aug 2025</span>
+                  </div>
+                  <div>
+                    <p>Internships</p>
+                    <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
+                      <div>
+                        <div className="flex items-baseline justify-between gap-4">
+                          <span>The Trade Desk</span>
+                          <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Summer 2025</span>
+                        </div>
+                        <div className="mt-1 border-l border-skyAccent/40 pl-3 opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>
+                          Product Management Intern
+                        </div>
                       </div>
-                      <ul className="mt-1 list-['▸'] space-y-2 pl-5 leading-snug" style={{ fontSize: "16px" }}>
-                        <li className="pl-2">
-                          Drove a projected $6.2M lift in multi-retailer spend for FY2026 by building and launching an internal tool to help traders measure audience reach and overlap across campaigns and identify opportunities for additional retail data activation
-                        </li>
-                        <li className="pl-2">
-                          Drove 20% adoption within 2 weeks and a projected 10% increase in workflow efficiency in Q4 by synthesizing 5+ trader feedback interviews into 5 feature requirements to address audience duplication and previously unquantifiable incremental reach
-                        </li>
-                      </ul>
+                      <div>
+                        <div className="flex items-baseline justify-between gap-4">
+                          <span>Amazon</span>
+                          <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Summer 2024</span>
+                        </div>
+                        <div className="mt-1 border-l border-skyAccent/40 pl-3 opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>
+                          Program Management Intern
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex items-baseline justify-between gap-4">
+                          <span>Sizzle.se</span>
+                          <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Summer 2023</span>
+                        </div>
+                        <div className="mt-1 border-l border-skyAccent/40 pl-3 opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>
+                          Product Marketing Intern
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <p>Contract</p>
+                    <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span>SAS Institute</span>
+                        <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Aug 2024 - Jan 2025</span>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span>Meta</span>
+                        <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Jan 2024 - May 2024</span>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span>PG&amp;E</span>
+                        <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Aug 2023 - Dec 2023</span>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span>Niantic, Inc.</span>
+                        <span className="text-right opacity-70" style={{ fontSize: "14px", lineHeight: "20px" }}>Aug 2022 - Dec 2022</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
-                  Education
+                <h3 className="font-sans text-foreground" style={{ fontSize: "22px", lineHeight: "30px" }}>
+                  Education.
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "17px" }}>
+                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "16px", lineHeight: "22px" }}>
                   <div className="flex items-baseline justify-between gap-8">
                     <span>University of California, Berkeley</span>
-                    <span className="text-right">Aug 2022 - May 2026</span>
+                    <span className="text-right">2022-26</span>
                   </div>
                   <p className="mt-1">B.A. Cognitive Science &amp; B.A. Data Science</p>
                 </div>
               </section>
               <section>
-                <h3 className="font-sans text-foreground" style={{ fontSize: "21px", lineHeight: "29px" }}>
+                <h3 className="font-sans text-foreground" style={{ fontSize: "22px", lineHeight: "30px" }}>
                   <a
                     href="/files/Melanie_Hsiang_Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="transition hover:translate-x-1"
                   >
-                    <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume</span>
+                    <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume.</span>
                     <span className="ml-[0.15em] inline-block origin-left -translate-y-[0.0625rem] scale-125">↗</span>
                   </a>
                 </h3>
@@ -192,11 +235,9 @@ function App() {
         <section id="projects" data-page-title="Projects" className="ml-44 mr-20 min-h-screen py-28">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
-              Projects
+              Projects.
             </h2>
-            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
-              I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — <em>building for and with people</em>.
-            </p>
+            {/* Previous intro: I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — building for and with people. */}
           </div>
 
           <div>
