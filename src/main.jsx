@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Mail } from "lucide-react";
 import "./index.css";
@@ -8,6 +8,24 @@ const projects = [
     title: "Netflix Games: A Case Study",
     figmaUrl: "https://www.figma.com/proto/RQeW2ZigMMTtoTKMr0ZzJj/Presentation?node-id=411-17&p=f&viewport=-1086%2C-39%2C0.14&t=XWUW7E1VF8kO2M87-1&scaling=contain&content-scaling=fixed&starting-point-node-id=411%3A17&page-id=0%3A1",
     blurb: "A product case study done in 2023 during my time at Product\u00a0Space\u00a0@\u00a0Berkeley, teaching me the power of consumer feedback and Figma prototyping.",
+  },
+];
+
+const personalPhotos = [
+  {
+    src: "/images/personal/moskenesoya-norway.jpeg",
+    alt: "Landscape in Moskenesøya, Norway",
+    caption: "Moskenesøya, Norway",
+  },
+  {
+    src: "/images/personal/fredvang-ryten-norway.jpeg",
+    alt: "View from Fredvang Ryten, Norway",
+    caption: "Fredvang Ryten, Norway",
+  },
+  {
+    src: "/images/personal/petra-jordan.jpeg",
+    alt: "Petra, Jordan",
+    caption: "Petra, Jordan",
   },
 ];
 
@@ -35,6 +53,123 @@ function ProjectCard({ project }) {
       </div>
     </article>
   );
+}
+
+function PhotoCoverflow({ photos, interval = 5000 }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const autoplayRef = useRef(null);
+  const touchStartXRef = useRef(null);
+
+  const stopAutoplay = () => {
+    if (autoplayRef.current) {
+      window.clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayRef.current = window.setInterval(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % photos.length);
+    }, interval);
+  };
+
+  const resetAutoplay = () => {
+    startAutoplay();
+  };
+
+  const navigateTo = (nextIndex, shouldResetAutoplay = false) => {
+    setActiveIndex((nextIndex + photos.length) % photos.length);
+    if (shouldResetAutoplay) resetAutoplay();
+  };
+
+  useEffect(() => {
+    startAutoplay();
+
+    return () => {
+      stopAutoplay();
+    };
+  }, [photos.length, interval]);
+
+  const previousIndex = (activeIndex - 1 + photos.length) % photos.length;
+  const nextIndex = (activeIndex + 1) % photos.length;
+  const visiblePhotos = [
+    { ...photos[previousIndex], index: previousIndex, position: "previous" },
+    { ...photos[activeIndex], index: activeIndex, position: "current" },
+    { ...photos[nextIndex], index: nextIndex, position: "next" },
+  ];
+
+  const getPhotoClasses = (position) => {
+    if (position === "current") {
+      return "z-20 w-[35.125rem] translate-x-[-50%] translate-y-[-50%] scale-100 opacity-100 blur-0 max-[996px]:w-[82%]";
+    }
+
+    if (position === "previous") {
+      return "z-10 w-[25.3125rem] translate-x-[-108%] translate-y-[-50%] scale-[0.78] cursor-pointer opacity-45 blur-[2px] max-[996px]:w-[46%] max-[996px]:translate-x-[-92%]";
+    }
+
+    return "z-10 w-[25.3125rem] translate-x-[8%] translate-y-[-50%] scale-[0.78] cursor-pointer opacity-45 blur-[2px] max-[996px]:w-[46%] max-[996px]:translate-x-[-8%]";
+  };
+
+  const handleTouchStart = (event) => {
+    touchStartXRef.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartXRef.current === null) return;
+
+    const swipeDistance = event.changedTouches[0].clientX - touchStartXRef.current;
+    touchStartXRef.current = null;
+
+    if (Math.abs(swipeDistance) > 40) {
+      navigateTo(swipeDistance > 0 ? previousIndex : nextIndex, true);
+    }
+  };
+
+  return (
+    <div
+      className="mx-auto mt-12 w-[min(960px,100%)] max-[996px]:w-[26rem] max-[996px]:max-w-full"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="relative aspect-[2.26/1] overflow-visible max-[996px]:aspect-[1.6/1]">
+        {visiblePhotos.map((photo) => (
+          <button
+            key={photo.src}
+            type="button"
+            onClick={() => photo.position !== "current" && navigateTo(photo.index, true)}
+            aria-label={photo.position === "current" ? photo.caption : `Show ${photo.caption}`}
+            className={`absolute left-1/2 top-1/2 flex aspect-[4/3] items-center justify-center overflow-visible rounded-2xl bg-transparent transition-all duration-700 ease-in-out ${getPhotoClasses(photo.position)}`}
+          >
+            <img src={photo.src} alt={photo.position === "current" ? photo.alt : ""} className="max-h-full max-w-full rounded-2xl object-contain shadow-[0_8px_26px_rgba(31,74,116,0.08)]" />
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={() => navigateTo(previousIndex, true)}
+          aria-label="Previous photo"
+          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 font-sans text-3xl text-foreground transition hover:-translate-x-1"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          onClick={() => navigateTo(nextIndex, true)}
+          aria-label="Next photo"
+          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 font-sans text-3xl text-foreground transition hover:translate-x-1"
+        >
+          ›
+        </button>
+      </div>
+      <p className="mt-8 text-center font-sans text-lg text-muted-foreground">
+        {photos[activeIndex].caption}
+      </p>
+    </div>
+  );
+}
+
+function PersonalGallery() {
+  return <PhotoCoverflow photos={personalPhotos} interval={5000} />;
 }
 
 function App() {
@@ -242,6 +377,18 @@ function App() {
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
+          </div>
+        </section>
+
+        <section id="personal" data-page-title="Personal" className="mx-[clamp(3rem,calc((100vw-900px)/2),15rem)] flex min-h-screen items-center justify-start py-20">
+          <div className="w-full text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
+            <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
+              Personal.
+            </h2>
+            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
+              If you can&apos;t reach me, I&apos;m probably somewhere in the mountains. These are some of the places I&apos;ve backpacked to.
+            </p>
+            <PersonalGallery />
           </div>
         </section>
       </main>
