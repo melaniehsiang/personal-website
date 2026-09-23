@@ -13,11 +13,11 @@ const projects = [
 
 function ProjectCard({ project }) {
   return (
-    <article className="mt-14 flex max-w-5xl items-center gap-12 text-left">
+    <article className="mt-14 flex w-full items-center gap-16 text-left">
       <div className="grid aspect-video w-[26rem] shrink-0 max-w-full place-items-center rounded-2xl border border-skyAccent/25 bg-babyBlue/20 text-center font-sans text-xs text-muted-foreground shadow-[0_8px_26px_rgba(31,74,116,0.08)]">
         Video placeholder
       </div>
-      <div>
+      <div className="min-w-0 flex-1">
         <h3 className="font-serif text-[clamp(1.5rem,3vw,2.35rem)] leading-tight tracking-[-0.035em] text-foreground">
           {project.title}
         </h3>
@@ -29,10 +29,8 @@ function ProjectCard({ project }) {
         >
           View Presentation &amp; Prototype
         </a>
-        <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted-foreground">
-          A product case study done in 2023 during my time at Product&nbsp;Space&nbsp;@&nbsp;Berkeley, teaching me the power
-          <br />
-          of consumer feedback and Figma prototyping.
+        <p className="mt-4 max-w-none text-justify font-sans text-lg leading-relaxed text-muted-foreground">
+          A product case study done in 2023 during my time at Product&nbsp;Space&nbsp;@&nbsp;Berkeley, teaching me the power of consumer feedback and Figma prototyping.
         </p>
       </div>
     </article>
@@ -123,7 +121,7 @@ function App() {
           </div>
         </section>
 
-        <section id="about" data-page-title="About" className="ml-44 mr-20 flex min-h-screen items-center justify-start py-20">
+        <section id="about" data-page-title="About" className="ml-60 mr-60 flex min-h-screen items-center justify-start py-20">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               About.
@@ -131,10 +129,10 @@ function App() {
             <div className="mt-10 space-y-8">
               <section>
                 <h3 className="font-sans text-foreground" style={{ fontSize: "22px", lineHeight: "30px" }}>
-                  Work Experience.
+                  Work Experience
                 </h3>
-                <div className="mt-4 grid w-[calc(100vw-20rem)] grid-cols-3 gap-8 font-sans text-muted-foreground" style={{ fontSize: "19px", lineHeight: "25px" }}>
-                  <div>
+                <div className="mt-4 grid w-[calc(100vw-30rem)] grid-cols-3 gap-20 font-sans text-muted-foreground" style={{ fontSize: "19px", lineHeight: "25px" }}>
+                  <div className="min-w-0">
                     <p>Full-time</p>
                     <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
                       <div>
@@ -148,7 +146,7 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p>Internships</p>
                     <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
                       <div>
@@ -180,7 +178,7 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p>Contract</p>
                     <div className="mt-2 space-y-2 font-['Noto_Sans']" style={{ fontSize: "16px", lineHeight: "22px" }}>
                       <div className="flex items-baseline justify-between gap-4">
@@ -205,9 +203,9 @@ function App() {
               </section>
               <section>
                 <h3 className="font-sans text-foreground" style={{ fontSize: "22px", lineHeight: "30px" }}>
-                  Education.
+                  Education
                 </h3>
-                <div className="ml-4 mt-4 w-[calc(100vw-21rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "16px", lineHeight: "22px" }}>
+                <div className="ml-4 mt-4 w-[calc(100vw-31rem)] font-['Noto_Sans'] leading-snug text-muted-foreground" style={{ fontSize: "16px", lineHeight: "22px" }}>
                   <div className="flex items-baseline justify-between gap-8">
                     <span>University of California, Berkeley</span>
                     <span className="text-right">2022-26</span>
@@ -223,7 +221,7 @@ function App() {
                     rel="noreferrer"
                     className="transition hover:translate-x-1"
                   >
-                    <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume.</span>
+                    <span className="underline decoration-skyAccent/40 underline-offset-4 hover:decoration-skyAccent">Resume</span>
                     <span className="ml-[0.15em] inline-block origin-left -translate-y-[0.0625rem] scale-125">↗</span>
                   </a>
                 </h3>
@@ -232,7 +230,7 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" data-page-title="Projects" className="ml-44 mr-20 min-h-screen py-28">
+        <section id="projects" data-page-title="Projects" className="ml-60 mr-60 min-h-screen py-28">
           <div className="max-w-3xl text-left">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Projects.
