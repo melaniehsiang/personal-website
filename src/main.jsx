@@ -27,6 +27,23 @@ const personalPhotos = [
     alt: "Petra, Jordan",
     caption: "Petra, Jordan",
   },
+  {
+    src: "/images/personal/petra-jordan-2.jpeg",
+    alt: "Petra, Jordan",
+    caption: "Petra, Jordan",
+  },
+  {
+    src: "/images/personal/interlaken-switzerland.jpeg",
+    alt: "Interlaken, Switzerland",
+    caption: "Interlaken, Switzerland",
+  },
+
+  {
+    src: "/images/personal/goreme-nevsehir-turkiye.jpeg",
+    alt: "Goreme Nevşehir, Türkiye",
+    caption: "Goreme Nevşehir, Türkiye",
+  },
+
 ];
 
 function ProjectCard({ project }) {
@@ -128,7 +145,7 @@ function PhotoCoverflow({ photos, interval = 5000 }) {
 
   return (
     <div
-      className="mx-auto mt-12 w-[min(960px,100%)] max-[996px]:w-[26rem] max-[996px]:max-w-full"
+      className="mx-auto mt-16 w-[min(960px,100%)] max-[996px]:w-[26rem] max-[996px]:max-w-full"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -198,24 +215,35 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToContent = (event, targetId, hash) => {
+    event.preventDefault();
+    document.getElementById(targetId)?.scrollIntoView({ block: "center", behavior: "smooth" });
+    window.history.replaceState(null, "", hash);
+  };
+
   return (
     <div className="min-h-screen overflow-hidden">
       <header className="fixed left-0 top-0 z-20 h-screen w-44 px-4 py-7 max-[1250px]:hidden">
         <nav className="flex h-full flex-col gap-5">
           <a
             href="#top"
+            onClick={(event) => scrollToContent(event, "top-content", "#top")}
             className="ml-3 grid h-[3.4rem] w-[3.4rem] place-items-center rounded-full border border-skyAccent/35 bg-ivory/25 text-xs font-extrabold tracking-tight text-foreground shadow-[0_8px_26px_rgba(31,74,116,0.28)] backdrop-blur-md transition duration-300 hover:scale-105"
           >
             MKH
           </a>
           <div className="flex flex-1 flex-col gap-1 text-[0.8125rem] font-bold text-foreground">
-            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#about">
+            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#about" onClick={(event) => scrollToContent(event, "about-content", "#about")}>
               About.
             </a>
-            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#projects">
+            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#projects" onClick={(event) => scrollToContent(event, "projects-content", "#projects")}>
               Projects.
             </a>
-            <a className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1" href="#personal">
+            <a
+              className="rounded-xl px-3 py-2 transition duration-300 hover:translate-x-1"
+              href="#personal"
+              onClick={(event) => scrollToContent(event, "personal-content", "#personal")}
+            >
               Personal.
             </a>
 
@@ -246,7 +274,7 @@ function App() {
 
       <main className="min-h-screen">
         <section id="top" data-page-title="" className="mx-auto flex min-h-screen w-[min(1120px,calc(100%-32px))] items-center justify-center py-20">
-          <div className="text-left">
+          <div id="top-content" className="text-left">
             <h1 className="max-w-4xl font-serif text-[clamp(2.5rem,5.9vw,5.35rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Hey, I&apos;m Melanie.
             </h1>
@@ -257,7 +285,7 @@ function App() {
         </section>
 
         <section id="about" data-page-title="About" className="mx-[clamp(3rem,calc((100vw-900px)/2),15rem)] flex min-h-screen items-center justify-start py-20">
-          <div className="w-full text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
+          <div id="about-content" className="w-full text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               About.
             </h2>
@@ -365,27 +393,29 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" data-page-title="Projects" className="mx-[clamp(3rem,calc((100vw-900px)/2),15rem)] min-h-screen py-28">
-          <div className="max-w-3xl text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
-            <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
-              Projects.
-            </h2>
-            {/* Previous intro: I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — building for and with people. */}
-          </div>
+        <section id="projects" data-page-title="Projects" className="mx-[clamp(3rem,calc((100vw-900px)/2),15rem)] flex min-h-screen items-center justify-start py-20">
+          <div id="projects-content" className="w-full max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
+            <div className="max-w-3xl text-left">
+              <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
+                Projects.
+              </h2>
+              {/* Previous intro: I see each one of my projects as stepping stones along the path where I navigate and deepen my interests. The adventure I am currently embarking on is Product — building for and with people. */}
+            </div>
 
-          <div>
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
+            <div>
+              {projects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+              ))}
+            </div>
           </div>
         </section>
 
         <section id="personal" data-page-title="Personal" className="mx-[clamp(3rem,calc((100vw-900px)/2),15rem)] flex min-h-screen items-center justify-start py-20">
-          <div className="w-full text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
+          <div id="personal-content" className="w-full text-left max-[996px]:mx-auto max-[996px]:w-[26rem] max-[996px]:max-w-full">
             <h2 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
               Personal.
             </h2>
-            <p className="mt-8 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
+            <p className="mt-6 max-w-2xl font-sans text-muted-foreground" style={{ fontSize: "20px", lineHeight: "28px" }}>
               If you can&apos;t reach me, I&apos;m probably somewhere in the mountains. These are some of the places I&apos;ve backpacked to.
             </p>
             <PersonalGallery />
