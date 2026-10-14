@@ -36,3 +36,135 @@
     @apply bg-background font-serif text-foreground antialiased;
   }
 }
+
+.site-shell {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 550ms ease;
+}
+
+.site-shell--visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  animation: intro-overlay-exit 3.9s ease forwards;
+}
+
+.intro-figure {
+  --intro-start-x: calc(100vw + 30px);
+  --intro-target-x: 50vw;
+  --intro-target-y: 45vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: intro-figure-path 3.9s linear forwards;
+}
+
+.intro-head {
+  fill: currentColor;
+  animation: intro-character-exit 3.9s ease forwards;
+}
+
+.intro-body {
+  animation: intro-character-exit 3.9s ease forwards;
+}
+
+.intro-arm,
+.intro-leg {
+  transform-box: view-box;
+}
+
+.intro-arm-left,
+.intro-arm-wave {
+  transform-origin: 50px 39px;
+}
+
+.intro-leg-left,
+.intro-leg-right {
+  transform-origin: 50px 58px;
+}
+
+.intro-figure svg {
+  animation: intro-walk-bounce 250ms ease-in-out 8 alternate;
+}
+
+.intro-arm-left {
+  animation: intro-arm-swing 250ms ease-in-out 8 alternate;
+}
+
+.intro-arm-wave {
+  animation: intro-wave 3.9s ease-in-out forwards;
+}
+
+.intro-leg-left {
+  animation: intro-leg-walk 250ms ease-in-out 8 alternate;
+}
+
+.intro-leg-right {
+  animation: intro-leg-walk 250ms ease-in-out 8 alternate-reverse;
+}
+
+@keyframes intro-figure-path {
+  0% {
+    transform: translate(var(--intro-start-x), calc(var(--intro-target-y) + 12px));
+  }
+  51%,
+  100% {
+    transform: translate(calc(var(--intro-target-x) - 120px), calc(var(--intro-target-y) + 12px));
+  }
+}
+
+@keyframes intro-wave {
+  0%, 51% { transform: rotate(0deg); }
+  55% { transform: rotate(-82deg); }
+  59% { transform: rotate(-48deg); }
+  63% { transform: rotate(-82deg); }
+  67% { transform: rotate(-48deg); }
+  71% { transform: rotate(-82deg); }
+  77%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes intro-character-exit {
+  0%, 77% { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+
+@keyframes intro-walk-bounce {
+  from { transform: translateY(2px) rotate(-1deg); }
+  to { transform: translateY(-6px) rotate(1deg); }
+}
+
+@keyframes intro-arm-swing {
+  from { transform: rotate(-26deg); }
+  to { transform: rotate(26deg); }
+}
+
+@keyframes intro-leg-walk {
+  from { transform: rotate(-31deg); }
+  to { transform: rotate(31deg); }
+}
+
+@keyframes intro-overlay-exit {
+  0%, 77% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay,
+  .intro-figure,
+  .intro-body,
+  .intro-arm,
+  .intro-leg {
+    animation: none;
+  }
+}

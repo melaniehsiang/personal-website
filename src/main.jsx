@@ -1,7 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Mail } from "lucide-react";
 import "./index.css";
+
+// Keep the intro implementation available for a later design pass.
+const ENABLE_INTRO_ANIMATION = false;
+// Set to false when the intro should only play once per browser session.
+const REPLAY_INTRO_ON_REFRESH = true;
 
 const projects = [
   {
@@ -45,6 +50,72 @@ const personalPhotos = [
   },
 
 ];
+
+function IntroAnimation({ targetRef, onReveal, onComplete }) {
+  const figureRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const positionFigure = () => {
+      const period = targetRef.current?.getBoundingClientRect();
+      if (!period || !figureRef.current) return;
+
+      figureRef.current.style.setProperty("--intro-start-x", `${window.innerWidth + 30}px`);
+      figureRef.current.style.setProperty("--intro-target-x", `${period.left + period.width / 2 - 50}px`);
+      figureRef.current.style.setProperty("--intro-target-y", `${period.top + period.height / 2 - 18}px`);
+      figureRef.current.style.setProperty("--intro-dot-scale", `${Math.max(period.width / 10.8, 0.25)}`);
+    };
+
+    positionFigure();
+    document.fonts?.ready.then(positionFigure);
+    window.addEventListener("resize", positionFigure);
+    return () => window.removeEventListener("resize", positionFigure);
+  }, [targetRef]);
+
+  useEffect(() => {
+    sessionStorage.setItem("melanie-intro-played", "true");
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      onReveal();
+      onComplete();
+      return undefined;
+    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const revealTimer = window.setTimeout(onReveal, 3200);
+    const completeTimer = window.setTimeout(onComplete, 3900);
+    return () => {
+      window.clearTimeout(revealTimer);
+      window.clearTimeout(completeTimer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  return (
+    <div className="intro-overlay" aria-hidden="true">
+      <div ref={figureRef} className="intro-figure">
+        <svg viewBox="0 0 100 110" className="h-[110px] w-[100px] overflow-visible">
+          <g transform="translate(20 7.2) scale(.6)">
+            <circle className="intro-head" cx="50" cy="18" r="9" />
+            <g className="intro-body" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="5">
+              <line className="intro-torso" x1="50" y1="29" x2="50" y2="58" />
+              <line className="intro-arm intro-arm-left" x1="50" y1="39" x2="35" y2="52" />
+              <line className="intro-arm intro-arm-wave" x1="50" y1="39" x2="65" y2="52" />
+              <g className="intro-leg intro-leg-left">
+                <line x1="50" y1="58" x2="39" y2="79" />
+                <line x1="39" y1="79" x2="32" y2="79" />
+              </g>
+              <g className="intro-leg intro-leg-right">
+                <line x1="50" y1="58" x2="62" y2="79" />
+                <line x1="62" y1="79" x2="69" y2="79" />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 function ProjectCard({ project }) {
   return (
@@ -190,6 +261,12 @@ function PersonalGallery() {
 }
 
 function App() {
+  const periodRef = useRef(null);
+  const introAlreadyPlayed = () => sessionStorage.getItem("melanie-intro-played") === "true";
+  const shouldPlayIntro = () => ENABLE_INTRO_ANIMATION && (REPLAY_INTRO_ON_REFRESH || !introAlreadyPlayed());
+  const [introVisible, setIntroVisible] = useState(shouldPlayIntro);
+  const [siteRevealed, setSiteRevealed] = useState(() => !shouldPlayIntro());
+
   useEffect(() => {
     const defaultTitle = "Melanie Hsiang";
     const sections = Array.from(document.querySelectorAll("[data-page-title]"));
@@ -223,7 +300,23 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-hidden">
-      <header className="fixed left-0 top-0 z-20 h-screen w-44 px-4 py-7 max-[1250px]:hidden">
+      {introVisible && (
+        <IntroAnimation
+          targetRef={periodRef}
+          onReveal={() => setSiteRevealed(true)}
+          onComplete={() => {
+            setSiteRevealed(true);
+            setIntroVisible(false);
+          }}
+        />
+      )}
+
+      <div
+        className={`site-shell ${siteRevealed ? "site-shell--visible" : ""}`}
+        aria-hidden={!siteRevealed}
+        inert={siteRevealed ? undefined : ""}
+      >
+      <header className="fixed left-0 top-0 z-20 h-screen w-44 px-4 py-7 max-[996px]:hidden">
         <nav className="flex h-full flex-col gap-5">
           <a
             href="#top"
@@ -251,7 +344,7 @@ function App() {
         </nav>
       </header>
 
-      <div className="fixed bottom-7 left-7 z-20 flex items-center gap-3 text-foreground max-[1250px]:hidden">
+      <div className="fixed bottom-7 left-7 z-20 flex items-center gap-3 text-foreground max-[996px]:hidden">
         <a
           href="mailto:melaniehsiang@berkeley.edu"
           aria-label="Email Melanie Hsiang"
@@ -276,7 +369,7 @@ function App() {
         <section id="top" data-page-title="" className="mx-auto flex min-h-screen w-[min(1120px,calc(100%-32px))] items-center justify-center py-20">
           <div id="top-content" className="text-left">
             <h1 className="max-w-4xl font-serif text-[clamp(2.5rem,5.9vw,5.35rem)] leading-[0.95] tracking-[-0.045em] text-foreground">
-              Hey, I&apos;m Melanie.
+              Hey, I&apos;m Melanie<span ref={periodRef} className="period-target">.</span>
             </h1>
             <p className="mt-7 max-w-2xl origin-left scale-x-95 font-sans text-3xl tracking-normal text-muted-foreground">
               Come walk with me
@@ -422,6 +515,7 @@ function App() {
           </div>
         </section>
       </main>
+      </div>
     </div>
   );
 }
